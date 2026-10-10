@@ -40,7 +40,7 @@ theme:
   ink: "#251f19"
 about:
   title: About the hackathon
-  description: Infrastructure and AI Hackathon is a 24-hour hackathon at FH Dornbirn. Teams work on a project from Saturday to Sunday and present it at the end.
+  description: Join us for a weekend in Dornbirn where developers, designers, and curious minds explore new ideas at the intersection of infrastructure and AI. Expect hands-on challenges, collaboration, and a chance to meet people who enjoy building things. A hackathon brings teams together to turn an idea into a prototype within a limited time — here, you’ll have 24 hours to experiment, learn, and share what you’ve built. Everyone is welcome, including first-time hackers.
   points:
     - Come with a team or find one here.
     - Ask other teams for help or feedback.

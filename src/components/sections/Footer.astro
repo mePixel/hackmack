@@ -10,7 +10,7 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
     </div>
 
     <div class="footer__mid">
-      <p class="footer__tagline">{event.enabled.venue ? event.footerTagline : `${event.duration} of building together. Venue to be confirmed.`}<br />{event.date}.</p>
+      <p class="footer__tagline">{event.enabled.venue ? event.footerTagline : <>{event.duration} of building together.<br />Venue to be confirmed.</>}<br />{event.date}.</p>
       <nav class="footer__cols" aria-label="Footer">
         {columns.map((col) => (
           <div class="footer__col">
