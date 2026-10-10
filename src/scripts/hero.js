@@ -40,6 +40,7 @@ export function init(reduced) {
     const dy = lerp(0, -restTop, p);
 
     panel.classList.toggle('is-expanding', p > 0);
+    panel.style.setProperty('--content-w', `${restW}px`);
     panel.style.setProperty('--w', `${w}px`);
     panel.style.setProperty('--h', `${h}px`);
     panel.style.setProperty('--y', `${dy}px`);
