@@ -10,7 +10,7 @@ const { hideLabel = false } = Astro.props;
     {logos.map((logo) => {
       const Tag = logo.href ? 'a' : 'span';
       return <li>
-        <Tag class={`logo logo--${logo.slug}`} href={logo.href} aria-label={logo.href ? 'Niki AI' : undefined}>
+        <Tag class={`logo logo--${logo.slug}`} href={logo.href} target={logo.href ? "_blank" : undefined} rel={logo.href ? "noopener noreferrer" : undefined} aria-label={logo.href ? 'Niki AI' : undefined}>
         {logo.parts.map((p) => (
           <span class={`logo__part logo__part--${p.kind}`} style={`--w:${p.w}px;--h:${p.h}px`}>
             <img class="logo__d" src={p.d} alt="" />
@@ -27,7 +27,7 @@ const { hideLabel = false } = Astro.props;
     <div class="logos__track">
       {[0, 1, 2].map((copy) => logos.map((logo) => {
         const Tag = logo.href ? 'a' : 'div';
-        return <Tag class={`logo logos__cell logo--${logo.slug}`} href={logo.href} aria-label={logo.href ? 'Niki AI' : undefined} aria-hidden={copy > 0 ? 'true' : undefined} tabindex={logo.href && copy > 0 ? -1 : undefined}>
+        return <Tag class={`logo logos__cell logo--${logo.slug}`} href={logo.href} target={logo.href ? "_blank" : undefined} rel={logo.href ? "noopener noreferrer" : undefined} aria-label={logo.href ? 'Niki AI' : undefined} aria-hidden={copy > 0 ? 'true' : undefined} tabindex={logo.href && copy > 0 ? -1 : undefined}>
           {logo.parts.map((p) => (
             <span class={`logo__part logo__part--${p.kind}`} style={`--w:${p.w}px;--h:${p.h}px`}>
               <img class="logo__d" src={p.d} alt="" loading="lazy" />
