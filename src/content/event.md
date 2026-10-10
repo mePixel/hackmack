@@ -3,7 +3,7 @@ name: Infrastructure and AI Hackathon
 edition: "2027"
 demo: true
 description: A 24-hour hackathon in Dornbirn. Come with friends or find a team here, work on a project, and show it on Sunday.
-date: May 22–23, 2027
+date: March 27–28, 2027
 location: FH Dornbirn, Austria
 venue: FH Dornbirn
 format: In person
@@ -30,16 +30,16 @@ about:
     - Present your project on Sunday.
 schedule:
   - day: Saturday
-    date: May 22
+    date: March 27
     items:
       - time: "11:00"
-        title: Opening & Festival Kick-off
+        title: Opening & Kick-off
       - time: "12:00"
         title: Challenge Reveal & Team Building
       - time: "13:00"
         title: Hackathon Start
   - day: Sunday
-    date: May 23
+    date: March 28
     items:
       - time: "13:00"
         title: Hackathon Ends & Project Submission
@@ -65,7 +65,7 @@ faq:
 closing:
   title: Join Infrastructure and AI Hackathon
   description: Come on your own or with a team. We’ll see you in Dornbirn.
-heroImage: /assets/hero.jpg
+heroImage: /assets/jael-vallee-BvpTdaKbCcQ-unsplash.jpg
 sections:
   why:
     badge: The experience
@@ -246,7 +246,7 @@ integrationRows:
 navLinks:
   - label: Experience
     href: /#why
-  - label: Tracks
+  - label: Challenges
     href: /#delegation
   - label: Schedule
     href: /#pricing

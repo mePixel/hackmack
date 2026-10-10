@@ -9,11 +9,21 @@
   color: var(--white);
   font: 400 12px/1.5 var(--font-ui);
 }
+.delegation .stage {
+  height: 340px;
+  align-self: flex-start;
+}
+.delegation .mock {
+  position: relative;
+  padding: 0;
+  height: 100%;
+  overflow-y: auto;
+}
 .event-track {
-  padding: 32px;
+  padding: 24px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 16px;
   max-width: 480px;
 }
 .event-track > p:last-child,

@@ -11,11 +11,10 @@ export function init(reduced) {
 
   const setHeight = () => {
     // Animate to the menu's natural height so the spring has a target.
-    // Measured from the last child's offset so the panel's bottom padding is
-    // included; scrollHeight alone clips it in some engines.
+    // Measure within the menu; offsetTop can include the header above it.
     const last = menu.lastElementChild;
     const pad = parseFloat(getComputedStyle(menu).paddingBottom) || 0;
-    const h = last ? last.offsetTop + last.offsetHeight + pad : menu.scrollHeight;
+    const h = last ? last.getBoundingClientRect().bottom - menu.getBoundingClientRect().top + pad : menu.scrollHeight;
     menu.style.setProperty('--menu-h', Math.ceil(h) + 'px');
   };
 

@@ -15,11 +15,20 @@ export function init(reduced) {
   const mobile = window.matchMedia('(max-width: 810px)');
   let selected = 0;
   let collapsed = false;
+  let panelAnimation;
 
   const select = (step, collapse = false) => {
+    const wasCollapsed = collapsed;
+    const height = stage.getBoundingClientRect?.().height;
+    if (panelAnimation) {
+      panelAnimation.onfinish = null;
+      panelAnimation.cancel();
+    }
+    const animateClose = collapse && mobile.matches && !reduced && stage.animate;
     selected = step;
     collapsed = collapse;
-    stage.hidden = collapse;
+    stage.inert = collapse;
+    stage.hidden = collapse && !animateClose;
     // Tablet and phone place the stage directly beneath the active feature;
     // flex order does that without moving nodes.
     if (inner) inner.style.setProperty('--stage-order', String(step * 2 + 1));
@@ -30,16 +39,26 @@ export function init(reduced) {
       b.closest('.feature').classList.toggle('is-active', on);
     });
     mocks.forEach((m) => {
-      const on = !collapse && Number(m.dataset.step) === step;
+      const on = (!collapse || animateClose) && Number(m.dataset.step) === step;
       m.classList.toggle('is-active', on);
       m.hidden = !on;
-      if (on && !reduced && m.animate) {
+      if (on && !collapse && !reduced && m.animate) {
         m.animate(
           { opacity: [0, 1], transform: ['translateY(8px)', 'translateY(0)'] },
           { duration: 540, easing: 'cubic-bezier(0.2, 0.8, 0.2, 1)' }
         );
       }
     });
+    if (animateClose || (wasCollapsed && !collapse && mobile.matches && !reduced && stage.animate)) {
+      panelAnimation = stage.animate(
+        { height: collapse ? [`${height}px`, '0px'] : ['0px', `${stage.getBoundingClientRect().height}px`], opacity: collapse ? [1, 0] : [0, 1] },
+        { duration: 300, easing: 'ease-in-out' }
+      );
+      if (collapse) panelAnimation.onfinish = () => {
+        stage.hidden = true;
+        mocks.forEach(m => { m.hidden = true; });
+      };
+    }
   };
 
   buttons.forEach((b) => {
