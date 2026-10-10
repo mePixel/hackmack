@@ -1316,7 +1316,7 @@ img {
   transition: background-color 200ms var(--e-tween-out);
 }
 
-.fbtn--primary { background: var(--grey-900); }
+.fbtn--primary { background: var(--brand-500); }
 .fbtn--secondary { background: var(--white); }
 /* Tertiary: the label rolls but the chevron stays put. */
 .fbtn--tertiary { background: transparent; }
