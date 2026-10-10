@@ -24,10 +24,12 @@
   background: currentColor;
   transition: transform var(--d-menu) var(--e-menu), opacity 120ms linear;
 }
-.nav__burger i:first-child { top: 9px; }
-.nav__burger i:last-child  { top: 14px; }
-.is-open .nav__burger i:first-child { transform: translateY(2.5px) rotate(45deg); }
-.is-open .nav__burger i:last-child  { transform: translateY(-2.5px) rotate(-45deg); }
+.nav__burger i:first-child { top: 6.5px; }
+.nav__burger i:nth-child(2) { top: 11.5px; }
+.nav__burger i:last-child  { top: 16.5px; }
+.is-open .nav__burger i:first-child { transform: translateY(5px) rotate(45deg); }
+.is-open .nav__burger i:nth-child(2) { opacity: 0; }
+.is-open .nav__burger i:last-child  { transform: translateY(-5px) rotate(-45deg); }
 
 /* ---------- Workflow-links dropdown (desktop) ----------
    White panel, 12px radius, 4px gap, clipped; each row carries a 4px
