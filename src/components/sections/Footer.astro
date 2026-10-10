@@ -22,7 +22,7 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
     </div>
 
     <div class="footer__mark">
-      <span class="footer__watermark event-watermark" aria-hidden="true">{event.name}</span>
+      <span class:list={['footer__watermark', 'event-watermark', { 'event-watermark--long': event.name.length > 20 }]} aria-hidden="true">{event.name}</span>
       <img class="footer__mosaic" src={event.images.footer} alt="" loading="lazy" />
     </div>
 

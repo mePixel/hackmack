@@ -55,6 +55,13 @@
   color: var(--grey-200);
   text-align: center;
 }
+.footer__watermark.event-watermark--long {
+  font-size: clamp(28px, 6vw, 80px);
+  line-height: 1.1;
+  text-wrap: balance;
+  overflow-wrap: anywhere;
+  padding-block: 24px;
+}
 .footer .footer__bottom {
   position: static;
   padding: 24px 0 32px;
