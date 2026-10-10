@@ -2,7 +2,7 @@
 import Button from '../Button.astro';
 import { event } from '../../config/event';
 import type { Link } from '../../lib/content';
-const visibleSections: Record<string, boolean> = { '/#why': event.enabled.why, '/#delegation': event.enabled.tracks, '/#pricing': event.enabled.schedule, '/#faq': event.enabled.faq };
+const visibleSections: Record<string, boolean> = { '/#location': event.enabled.venue, '/#why': event.enabled.why, '/#delegation': event.enabled.tracks, '/#pricing': event.enabled.schedule, '/#faq': event.enabled.faq };
 const links: Link[] = event.navLinks.filter(link => visibleSections[link.href] !== false);
 ---
 <header class="nav-bar" data-nav>

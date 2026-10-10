@@ -12,7 +12,7 @@ import Integrations from '../components/sections/Integrations.astro';
 import Location from '../components/sections/Location.astro';
 import { event } from '../config/event';
 ---
-<Base title={`${event.name} ${event.edition} — 24-hour hackathon in Dornbirn`} description={event.description} path="/" schema={false}>
+<Base title={`${event.name} ${event.edition} — ${event.duration} hackathon · ${event.enabled.venue ? event.location : 'Venue to be confirmed'}`} description={event.description} path="/" schema={false}>
   <Hero />
   {event.enabled.logos && <Logos />}
   {event.enabled.why && <Why />}
@@ -20,7 +20,7 @@ import { event } from '../config/event';
   {event.enabled.people && <Testimonials />}
   {event.enabled.schedule && <Pricing />}
   {event.enabled.steps && <HowItWorks />}
-  <Location />
+  {event.enabled.venue && <Location />}
   {event.enabled.faq && <Faq />}
   {event.enabled.tools && <Integrations />}
 </Base>

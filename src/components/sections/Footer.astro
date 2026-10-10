@@ -1,6 +1,6 @@
 ---
 import { event } from '../../config/event';
-const visibility: Record<string, boolean> = { '/#why': event.enabled.why, '/#pricing': event.enabled.schedule, '/#delegation': event.enabled.tracks, '/#how-it-works': event.enabled.steps, '/#faq': event.enabled.faq };
+const visibility: Record<string, boolean> = { '/#location': event.enabled.venue, '/#why': event.enabled.why, '/#pricing': event.enabled.schedule, '/#delegation': event.enabled.tracks, '/#how-it-works': event.enabled.steps, '/#faq': event.enabled.faq };
 const columns = event.footerColumns.map(column => ({ ...column, links: column.links.filter(link => visibility[link.href] !== false) })).filter(column => column.links.length);
 ---
 <footer class="footer" id="footer">
@@ -10,7 +10,7 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
     </div>
 
     <div class="footer__mid">
-      <p class="footer__tagline">{event.footerTagline}<br />{event.date}.</p>
+      <p class="footer__tagline">{event.enabled.venue ? event.footerTagline : `${event.duration} of building together. Venue to be confirmed.`}<br />{event.date}.</p>
       <nav class="footer__cols" aria-label="Footer">
         {columns.map((col) => (
           <div class="footer__col">
@@ -23,7 +23,7 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
 
     <div class="footer__mark">
       <span class="footer__watermark event-watermark" aria-hidden="true">{event.name}</span>
-      <img class="footer__mosaic" src="/assets/footer-mosaic.png" alt="" loading="lazy" />
+      <img class="footer__mosaic" src={event.images.footer} alt="" loading="lazy" />
     </div>
 
     <div class="footer__bottom">

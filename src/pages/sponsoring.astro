@@ -3,14 +3,14 @@ import Base from '../layouts/Base.astro';
 import Button from '../components/Button.astro';
 import { event } from '../config/event';
 ---
-<Base title={`Sponsoring | ${event.name}`} description={`Support ${event.name} at ${event.venue}. Get in touch to discuss sponsoring the hackathon.`} path="/sponsoring/" cta={false} schema={false}>
+<Base title={`Sponsoring | ${event.name}`} description={`Support ${event.name}${event.enabled.venue ? ` at ${event.venue}` : ""}. Get in touch to discuss sponsoring the hackathon.`} path="/sponsoring/" cta={false} schema={false}>
   <article class="legal sponsoring">
     <h1 class="legal__title">Support {event.name}.</h1>
     <p class="legal__intro">Interested in sponsoring the hackathon? Here’s how to get involved.</p>
 
     <section class="legal__body">
       <h2 class="legal__h">About the event</h2>
-      <p>{event.name} is a 24-hour hackathon at {event.venue} on {event.date}. Participants work in teams and present their projects on Sunday. Taking part is free.</p>
+      <p>{event.name} is a 24-hour hackathon{event.enabled.venue && <> at {event.venue}</>} on {event.date}. {!event.enabled.venue && <>Venue to be confirmed. </>} Participants work in teams and present their projects on Sunday. Taking part is free.</p>
     </section>
 
     <section class="legal__body">

@@ -1,6 +1,6 @@
-# Hackmack — reusable hackathon content for the Parley template
+# Hackmack
 
-The original Parley page layout, section order, typography, colors, hero image, cards, tabs, marquees, and footer are retained. The content is adapted for a sample Hackmack edition.
+A hackathon website built with Astro and adapted from the Parley template.
 
 ## Development
 
@@ -16,20 +16,34 @@ npm run build
 node scripts/check-event.mjs
 ```
 
-## Reuse for another hackathon
+## Edit the website
 
-Edit **`src/config/event.ts`**. It contains the event name, edition, date, location, hero copy, section headings, benefits, challenge tracks, participant roles, schedule, FAQs, tools, logo assets, navigation, footer, registration, and theme colors.
+Edit [`src/content/event.md`](src/content/event.md). The YAML settings between the `---` lines are the website's source of truth:
 
-- Set `registration.url` to your application form. Until then the closing panel displays “Applications opening soon”; no fake submission or registration backend is included.
-- Set `contactEmail` to add an organizer contact button.
-- Change `enabled` values to hide optional sections. Header and footer anchor links follow these switches.
-- Replace the illustrative logos in `logos` and update `logosLabel`. Keep the label honest until you have confirmed partners.
-- Update all sample dates, schedule times, timezone text, participation rules, and FAQs. Then set `demo: false`.
-- For theme adjustments, edit `theme`. The defaults preserve the original palette. Check text contrast after changes.
-- Replace `heroImage` and `public/favicon.svg` for another event's artwork.
-- To reorder sections, move the existing components in `src/pages/index.astro`.
+- **Name and text:** `name`, `edition`, `description`, section headings, FAQs, schedule, and navigation.
+- **Brand colors:** `theme.accent`, `theme.background`, and `theme.ink`.
+- **Images:** `heroImage`, `images`, and image paths in the section lists.
+- **Partner logos:** `logos` and `logosLabel`.
+- **Registration:** `registration.url` and `contactEmail`.
+- **Visible sections:** `enabled` switches.
 
-The section component names preserve the original template: `Delegation` now holds challenge tracks, `Testimonials` describes participant roles (not invented testimonials), `Pricing` holds the schedule, and `Integrations` shows example tools. Their existing layout classes and interactions are retained. The SaaS subscription toggle was removed because a schedule has no billing period. Baked-in SaaS screenshots and animations are replaced by editable event content inside the same panels.
+Put image files in `public/assets/`, then use paths such as `/assets/my-photo.jpg` in the Markdown settings. Keep YAML indentation and quote hex colors. Instructions below the settings are for editors and are not rendered on the website.
+
+Save changes to see them in the local preview. Rebuild and deploy for published changes. `src/config/event.ts` only forwards the Markdown settings to the existing components.
+
+For structural changes, edit `src/pages/index.astro` (section order), `src/components/sections/` (section layouts), and `src/styles/` (styles and typography). The navigation and footer wordmarks use the event name as text. Venue address, map links, photo credit, sponsoring prose, and Code of Conduct wording remain in their Astro components/pages; review these when changing events.
+
+## Verification
+
+```sh
+npm run build
+node scripts/check-event.mjs
+node scripts/check-schedule.mjs
+```
+
+Check the desktop/mobile layout after changing artwork or long text.
+
+## Deployment
 
 Build for your deployment domain:
 
@@ -39,17 +53,8 @@ SITE_URL=https://your-event.example npm run build
 
 Without `SITE_URL`, canonical tags are omitted and the sitemap is empty. Deploy `dist/` to your static host.
 
-## Source locations
+## Template reference
 
-- `src/config/event.ts` — event content and optional section switches
-- `src/pages/index.astro` — original page composition
-- `src/components/sections/` — original section components with event copy
-- `src/styles/global.css`, `tokens.css`, `nav.css`, `pages.css` — original visual system
-- `src/styles/hackathon.css` — small additions for event content inside existing panels
-- `design/legacy-pages/` — original SaaS route source retained for reference, not published
-
-The old SaaS pricing, workflow, blog, and form pages are not linked or published. The optional `/admin/` editor still targets the original blog collection; event content is edited directly in the config file.
-
-`npm run build` verifies compilation. `node scripts/check-event.mjs` verifies homepage branding, anchor targets, registration messaging, and that obsolete SaaS routes are not published. Check desktop/mobile layout and tab interactions when editing the template.
+`design/legacy-pages/` contains the original SaaS pages for reference; these routes are not published. Some section names reflect that template: `Pricing.astro` displays the schedule, `Delegation.astro` displays challenges, and `Testimonials.astro` displays participant roles.
 
 Original MIT license and attribution remain in `LICENSE`.

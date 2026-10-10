@@ -1,6 +1,15 @@
 import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 const html = readFileSync('dist/index.html', 'utf8');
+if (readFileSync('src/content/event.md', 'utf8').includes('  venue: false')) {
+  assert(!html.includes('id="location"'), 'Unconfirmed venue section must be hidden');
+  assert(!html.includes('href="/#location"'), 'Hidden venue must not have navigation links');
+  for (const page of ['dist/index.html', 'dist/sponsoring/index.html']) {
+    const output = readFileSync(page, 'utf8');
+    assert(!output.includes('FH Dornbirn'), 'Unconfirmed venue must not be advertised');
+    assert(output.includes('Venue to be confirmed'), 'Venue status must be clear');
+  }
+}
 assert(!html.includes('Parley'), 'Old SaaS branding must not reach the homepage');
 for (const match of html.matchAll(/href="(?:\/)?#([^"]+)"/g)) {
   assert(html.includes(`id="${match[1]}"`), `Missing anchor: ${match[1]}`);

@@ -71,7 +71,7 @@
 
 .nav__brand { text-decoration: none; }
 
-.fbtn__arrows svg { color: var(--white); }
+.fbtn--primary .fbtn__arrows svg { color: var(--white); }
 
 /* Tint decorative mosaic assets without recoloring photos or partner logos. */
 img[src^="/assets/mosaic-"],

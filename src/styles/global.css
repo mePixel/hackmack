@@ -1328,7 +1328,6 @@ img {
   width: 36px;
   height: 36px;
   border-radius: 4px;
-  background: var(--brand-500);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1773,7 +1772,7 @@ img {
   position: absolute;
   inset: -40px;
   z-index: -2;
-  background: linear-gradient(rgba(247, 247, 244, 0.75), rgba(247, 247, 244, 0.75)), url("/assets/schedule-landscape.webp") center / cover no-repeat;
+  background: linear-gradient(rgba(247, 247, 244, 0.75), rgba(247, 247, 244, 0.75)), var(--schedule-image) center / cover no-repeat;
   filter: blur(20px);
   opacity: 0;
   transition: opacity var(--d-spring) var(--e-tween-out);
@@ -1888,7 +1887,7 @@ img {
   width: 100%;
   border-radius: 24px;
   overflow: hidden;
-  background: url("/assets/canyon.png") center / cover no-repeat;
+  background: var(--how-it-works-image) center / cover no-repeat;
   padding: 40px 20px;
   display: flex;
   flex-direction: column;
