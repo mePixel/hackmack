@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { event } from '../config/event';
+---
+<Base title={`Impressum | ${event.name}`} description={`Impressum und Offenlegung für ${event.name}.`} path="/imprint/" cta={false} schema={false}>
+  <article class="legal" lang="de">
+    <h1 class="legal__title">Impressum</h1>
+    <p>Impressum gem. § 5 E-Commerce-Gesetz (ECG) und Offenlegung gem. § 25 Mediengesetz (MedienG)</p>
+    <section class="legal__body">
+      <h2 class="legal__h">Medieninhaber und Herausgeber</h2>
+      <p>{event.imprint.operator || 'Vollständiger Vereinsname noch zu ergänzen.'}</p>
+      <p class="imprint-address">{event.imprint.address || 'Postal address pending.'}</p>
+      <h2 class="legal__h">Kontakt</h2>
+      <p>{event.imprint.contact}</p>
+      <p>Telefon: <a href={`tel:${event.imprint.phone.replaceAll(' ', '')}`}>{event.imprint.phone}</a></p>
+      <p>E-Mail: <a href={`mailto:${event.imprint.email}`}>{event.imprint.email}</a></p>
+      <h2 class="legal__h">Vereinsdaten</h2>
+      <p>ZVR-Zahl: {event.imprint.zvr || 'Noch zu ergänzen.'}</p>
+      <p>Zuständige Vereinsbehörde: {event.imprint.authority || 'Noch zu ergänzen.'}</p>
+      {event.imprint.uid && <p>UID-Nummer: {event.imprint.uid}</p>}
+      <h2 class="legal__h">Vertretungsbefugter Vorstand (Organe gemäß Statuten)</h2>
+      <p class="imprint-address">{event.imprint.board || 'Namen und Funktionen noch zu ergänzen.'}</p>
+      <h2 class="legal__h">Vereinszweck (gem. Statuten)</h2>
+      <p>{event.imprint.purpose || 'Vereinszweck gemäß Statuten noch zu ergänzen.'}</p>
+    </section>
+  </article>
+</Base>
+<style>
+  .imprint-address { white-space: pre-line; }
+  .legal a { color: inherit; }
+</style>

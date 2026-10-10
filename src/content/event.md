@@ -17,6 +17,23 @@ registration:
   description: We’ll post the sign-up details here when applications open.
   navLabel: Join the hackathon
 contactEmail: ""
+imprint:
+  operator: "Hackmack"
+  address: |
+    Malfattigasse 1-5/4/10
+    1120 Wien
+    Österreich
+  contact: "Xaver Drabik"
+  email: "xdxaverdrabik@gmail.com"
+  phone: "+43 699 11092018"
+  zvr: "Noch zu ergänzen."
+  authority: ""
+  uid: ""
+  board: |
+    Niklas Erath – Gründer
+    Xaver Drabik – Mitgründer
+    Sofiia-Khrystyna Borysiuk – Finanzverantwortliche
+  purpose: ""
 theme:
   accent: "#526b35"
   background: "#f7f7f4"
