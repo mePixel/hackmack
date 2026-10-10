@@ -4,7 +4,7 @@ const logos = event.logos;
 /** Workflow detail pages reuse the strip without its "Trusted by" label. */
 const { hideLabel = false } = Astro.props;
 ---
-<section class="logos">
+<section class:list={['logos', { 'logos--static': logos.length <= 3 }]}>
   {!hideLabel && <p class="logos__label">{event.logosLabel}</p>}
   <ul class="logos__list" role="list">
     {logos.map((logo) => {
@@ -39,3 +39,13 @@ const { hideLabel = false } = Astro.props;
     </div>
   </div>
 </section>
+
+<style>
+  .logos--static .logos__list {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 100%;
+    gap: 24px;
+  }
+  .logos--static .logos__ticker { display: none; }
+</style>
