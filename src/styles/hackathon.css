@@ -44,11 +44,20 @@
 }
 .event-step p { max-width: 50ch; }
 .event-day { font-size: var(--h3-size); }
+.footer .footer__mark { height: auto; }
 .footer__watermark.event-watermark {
+  position: relative;
+  top: auto;
+  bottom: auto;
+  height: auto;
   font: 600 clamp(70px, 17vw, 230px)/1.15 var(--font-display);
   letter-spacing: -0.04em;
   color: var(--grey-200);
   text-align: center;
+}
+.footer .footer__bottom {
+  position: static;
+  padding: 24px 0 32px;
 }
 /* Hidden content must also be absent from keyboard and screen-reader navigation. */
 .hiw__lottie[hidden], .mock[hidden] { display: none; }

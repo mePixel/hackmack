@@ -24,11 +24,11 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
     <div class="footer__mark">
       <span class="footer__watermark event-watermark" aria-hidden="true">{event.name}</span>
       <img class="footer__mosaic" src="/assets/footer-mosaic.png" alt="" loading="lazy" />
+    </div>
 
     <div class="footer__bottom">
       <p>© 2026 {event.name}.</p>
       <a href={event.enabled.faq ? "/#faq" : "/#cta"}>Event information</a>
-    </div>
     </div>
   </div>
 </footer>
