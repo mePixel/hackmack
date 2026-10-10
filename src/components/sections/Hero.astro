@@ -1,0 +1,18 @@
+---
+import Button from '../Button.astro';
+import { event } from '../../config/event';
+---
+<section class="hero" id="hero">
+  <div class="hero__panel" id="hero-media">
+    <img class="hero__img" src={event.heroImage} alt="" />
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <h1 class="hero__headline">
+        {event.name}
+      </h1>
+      <p class="hero__lede">{event.description}</p>
+      <p class="hero__lede">{event.date} · {event.location} · {event.cost}</p>
+      <Button href={event.registration.url || "#cta"} label={event.registration.url ? event.registration.label : event.registration.navLabel} variant="primary" />
+    </div>
+  </div>
+</section>

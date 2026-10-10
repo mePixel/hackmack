@@ -1,0 +1,41 @@
+---
+import { event } from '../../config/event';
+const logos = event.logos;
+/** Workflow detail pages reuse the strip without its "Trusted by" label. */
+const { hideLabel = false } = Astro.props;
+---
+<section class="logos">
+  {!hideLabel && <p class="logos__label">{event.logosLabel}</p>}
+  <ul class="logos__list" role="list">
+    {logos.map((logo) => {
+      const Tag = logo.href ? 'a' : 'span';
+      return <li>
+        <Tag class={`logo logo--${logo.slug}`} href={logo.href} aria-label={logo.href ? 'Niki AI' : undefined}>
+        {logo.parts.map((p) => (
+          <span class={`logo__part logo__part--${p.kind}`} style={`--w:${p.w}px;--h:${p.h}px`}>
+            <img class="logo__d" src={p.d} alt="" />
+            <img class="logo__h" src={p.h2} alt="" />
+          </span>
+        ))}
+        </Tag>
+      </li>;
+    })}
+  </ul>
+  <!-- Below the desktop breakpoint Framer swaps the static row for a Ticker.
+       Three copies keep the loop seamless at every width up to 1200px. -->
+  <div class="logos__ticker">
+    <div class="logos__track">
+      {[0, 1, 2].map((copy) => logos.map((logo) => {
+        const Tag = logo.href ? 'a' : 'div';
+        return <Tag class={`logo logos__cell logo--${logo.slug}`} href={logo.href} aria-label={logo.href ? 'Niki AI' : undefined} aria-hidden={copy > 0 ? 'true' : undefined} tabindex={logo.href && copy > 0 ? -1 : undefined}>
+          {logo.parts.map((p) => (
+            <span class={`logo__part logo__part--${p.kind}`} style={`--w:${p.w}px;--h:${p.h}px`}>
+              <img class="logo__d" src={p.d} alt="" loading="lazy" />
+              <img class="logo__h" src={p.h2} alt="" loading="lazy" />
+            </span>
+          ))}
+        </Tag>;
+      }))}
+    </div>
+  </div>
+</section>

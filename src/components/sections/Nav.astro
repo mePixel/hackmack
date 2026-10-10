@@ -1,0 +1,41 @@
+---
+import Button from '../Button.astro';
+import { event } from '../../config/event';
+import type { Link } from '../../lib/content';
+const visibleSections: Record<string, boolean> = { '/#why': event.enabled.why, '/#delegation': event.enabled.tracks, '/#pricing': event.enabled.schedule, '/#faq': event.enabled.faq };
+const links: Link[] = event.navLinks.filter(link => visibleSections[link.href] !== false);
+---
+<header class="nav-bar" data-nav>
+  <nav class="nav" aria-label="Main">
+    <a href="/" class="nav__brand" aria-label={event.name}>
+      <span class="event-wordmark">{event.name}</span>
+    </a>
+
+    <button class="nav__toggle" type="button" aria-expanded="false" aria-controls="nav-menu" aria-label="Open menu" data-nav-toggle>
+      <span class="nav__burger" aria-hidden="true"><i></i><i></i></span>
+    </button>
+
+    <div class="nav__right" id="nav-menu" data-nav-menu>
+      <ul class="nav__links">
+        {links.map((l, i) => (
+          <>
+            {i > 0 && <li aria-hidden="true" class="nav__sep"></li>}
+            <li class={l.dropdown ? 'nav__item nav__item--has-menu' : 'nav__item'}>
+              <a href={l.href} aria-haspopup={l.dropdown ? 'true' : undefined}>{l.label}</a>
+              {l.dropdown && (
+                <div class="nav__drop" role="group" aria-label={`${l.label} links`}>
+                  {l.dropdown.map((s) => (
+                    <a class="nav__dropitem" href={s.href}>
+                      <span class="nav__dropdot" aria-hidden="true"></span>{s.label}
+                    </a>
+                  ))}
+                </div>
+              )}
+            </li>
+          </>
+        ))}
+      </ul>
+      <Button href={event.registration.url || "/#cta"} label={event.registration.url ? event.registration.label : event.registration.navLabel} variant="primary" class="nav__cta" />
+    </div>
+  </nav>
+</header>

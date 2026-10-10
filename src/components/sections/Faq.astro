@@ -1,0 +1,27 @@
+---
+import Button from '../Button.astro';
+import { event } from '../../config/event';
+const faqs = event.faq;
+---
+<section class="faq" id="faq">
+  <div class="faq__left">
+    <h2 class="h2">{event.sections.faq.title}<br />{event.sections.faq.accent}</h2>
+    <p class="faq__sub">{event.sections.faq.description}</p>
+    <Button href="#cta" label="Registration details" variant="primary" />
+    <img class="faq__mosaic" src="/assets/faq-mosaic.png" alt="" loading="lazy" />
+  </div>
+
+  <div class="faq__list">
+    {faqs.map((item) => (
+      <details class="faq__item">
+        <summary>
+          <h5>{item.question}</h5>
+          <svg class="faq__plus" viewBox="0 0 16 16" aria-hidden="true"><path d="M8 1.5v13M1.5 8h13" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2.1 1.7"/></svg>
+        </summary>
+        <div class="faq__answer">
+          <p>{item.answer}</p>
+        </div>
+      </details>
+    ))}
+  </div>
+</section>

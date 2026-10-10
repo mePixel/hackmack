@@ -1,0 +1,53 @@
+---
+import { event } from '../../config/event';
+const features = event.features;
+---
+<!-- Sections/Tab+image. The Framer component is a plain relative section with
+     click-driven tab variants; it does not pin or advance on scroll. -->
+<section class="delegation" id="delegation">
+  <header class="delegation__header">
+    <div class="delegation__heading">
+      <h2 class="h2">{event.sections.tracks.title}</h2>
+    </div>
+  </header>
+
+  <div class="delegation__inner">
+    <ol class="features" role="tablist" aria-label="Hackathon tracks">
+      {features.map((f) => (
+        <li class="feature" style={`--i:${f.step}`}>
+          <button
+            class="feature__btn"
+            type="button"
+            role="tab"
+            id={`feature-${f.step}`}
+            data-step={f.step}
+            aria-selected={f.step === 0 ? 'true' : 'false'}
+            aria-controls={`mock-${f.step}`}
+            tabindex={f.step === 0 ? 0 : -1}
+          >
+            <span class="feature__chevron" aria-hidden="true"></span>
+            <span class="feature__head">
+              <h4 class="feature__label">{f.label}</h4>
+              <span class="feature__desc">{f.desc}</span>
+            </span>
+          </button>
+        </li>
+      ))}
+    </ol>
+
+    <div class="stage">
+      {features.map((f) => (
+        <div
+          class={`mock${f.step === 0 ? ' is-active' : ''}`}
+          id={`mock-${f.step}`}
+          role="tabpanel"
+          aria-labelledby={`feature-${f.step}`}
+          data-step={f.step}
+          hidden={f.step !== 0}
+        >
+          <div class="event-track"><img src={f.image} alt="" loading="lazy" /><p class="badge">{f.tag}</p><h3 class="h2">{f.label}</h3><p>{f.desc}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

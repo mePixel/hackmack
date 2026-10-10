@@ -1,0 +1,38 @@
+---
+import Button from '../Button.astro';
+import { event } from '../../config/event';
+---
+<section class="location" id="location" aria-labelledby="location-title">
+  <header class="why__header">
+    <h2 class="h2" id="location-title">The venue.</h2>
+  </header>
+  <div class="location__body">
+    <figure>
+      <img src="/assets/fhv-campus.jpg" alt="Entrance to the FH Vorarlberg campus in Dornbirn" width="700" height="477" loading="lazy" />
+      <figcaption>Photo © FHV · <a href="https://www.fhv.at/anreise">Campus entrance</a></figcaption>
+    </figure>
+    <div class="location__details">
+      <h3 class="h3">{event.venue}</h3>
+      <p>Vorarlberg University of Applied Sciences</p>
+      <address>Campus V, Hochschulstraße 1<br />6850 Dornbirn<br />Vorarlberg, Austria</address>
+      <Button href="https://maps.app.goo.gl/o4adQeKYvbh8YR9r5" label="Open in Google Maps" />
+      <a class="location__travel" href="https://www.fhv.at/en/fh/the-fhv/contact-and-directions">Campus map &amp; travel information</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .location { padding: 80px 0; display: grid; gap: 40px; }
+  .location__body { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr); gap: 48px; align-items: center; }
+  figure { margin: 0; min-width: 0; }
+  figure img { display: block; width: 100%; height: auto; border-radius: 24px; }
+  figcaption { margin-top: 12px; color: var(--grey-800); font-size: var(--s-size); }
+  a { text-underline-offset: 0.2em; }
+  .location__details { display: flex; flex-direction: column; align-items: flex-start; gap: 20px; }
+  .location__details p, address { margin: 0; font-size: var(--l-size); line-height: 1.65; color: var(--grey-800); font-style: normal; }
+  .location__travel { color: var(--brand-500); }
+  @media (max-width: 810px) {
+    .location { padding: 48px 0; }
+    .location__body { grid-template-columns: 1fr; gap: 32px; }
+  }
+</style>

@@ -1,0 +1,28 @@
+---
+import { event } from '../../config/event';
+const testimonials = event.people;
+---
+<section class="testimonials bleed" id="testimonials">
+  <header class="testimonials__header">
+    <p class="badge">{event.sections.people.badge}</p>
+    <h2 class="h2">{event.sections.people.title}<br /><em>{event.sections.people.accent}</em></h2>
+    <p class="testimonials__lede">{event.sections.people.description}</p>
+  </header>
+
+  <div class="marquee">
+    <ul class="marquee__track" id="track" role="list">
+      {testimonials.map((t) => (
+        <li class="tcard">
+          <p class="tcard__quote">{t.quote}</p>
+          <figure class="tcard__author">
+            <img class="tcard__avatar" src={t.avatar} srcset={t.srcset || undefined} alt="" />
+            <figcaption>
+              <h5 class="tcard__name">{t.name}</h5>
+              <span class="tcard__role">{t.role}</span>
+            </figcaption>
+          </figure>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>

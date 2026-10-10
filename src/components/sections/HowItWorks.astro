@@ -1,0 +1,26 @@
+---
+import { event } from '../../config/event';
+const tabs = event.steps.map((step, i) => ({ ...step, step: i }));
+---
+<section class="hiw" id="how-it-works">
+  <header class="hiw__header">
+    <p class="badge">{event.sections.steps.badge}</p>
+    <h2 class="h2 h2--center">
+      {event.sections.steps.title} <em>{event.sections.steps.accent}</em>
+    </h2>
+  </header>
+
+  <div class="hiw__panel" id="hiw-panel">
+    <div class="hiw__pills" role="list">
+      {tabs.map((t) => (
+        <button class={`hiw__pill${t.step === 0 ? ' is-active' : ''}`} data-step={t.step} type="button" aria-pressed={t.step === 0 ? 'true' : 'false'}>{t.label}</button>
+      ))}
+    </div>
+
+    <div class="hiw__stage">
+      {tabs.map((t) => (
+        <div class={`hiw__lottie${t.step === 0 ? ' is-active' : ''}`} data-step={t.step} hidden={t.step !== 0}><div class="event-step"><img src={t.image} alt="" loading="lazy" /><h3 class="h2">{t.title}</h3><p>{t.description}</p></div></div>
+      ))}
+    </div>
+  </div>
+</section>

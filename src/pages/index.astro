@@ -1,11 +1,26 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import Base from '../layouts/Base.astro';
+import Hero from '../components/sections/Hero.astro';
+import Logos from '../components/sections/Logos.astro';
+import Why from '../components/sections/Why.astro';
+import Delegation from '../components/sections/Delegation.astro';
+import Testimonials from '../components/sections/Testimonials.astro';
+import Pricing from '../components/sections/Pricing.astro';
+import HowItWorks from '../components/sections/HowItWorks.astro';
+import Faq from '../components/sections/Faq.astro';
+import Integrations from '../components/sections/Integrations.astro';
+import Location from '../components/sections/Location.astro';
+import { event } from '../config/event';
 ---
-
-<Layout>
-	<Welcome />
-</Layout>
+<Base title={`${event.name} ${event.edition} — 24-hour hackathon in Dornbirn`} description={event.description} path="/" schema={false}>
+  <Hero />
+  {event.enabled.logos && <Logos />}
+  {event.enabled.why && <Why />}
+  {event.enabled.tracks && <Delegation />}
+  {event.enabled.people && <Testimonials />}
+  {event.enabled.schedule && <Pricing />}
+  {event.enabled.steps && <HowItWorks />}
+  <Location />
+  {event.enabled.faq && <Faq />}
+  {event.enabled.tools && <Integrations />}
+</Base>

@@ -1,0 +1,34 @@
+---
+import { event } from '../../config/event';
+const visibility: Record<string, boolean> = { '/#why': event.enabled.why, '/#pricing': event.enabled.schedule, '/#delegation': event.enabled.tracks, '/#how-it-works': event.enabled.steps, '/#faq': event.enabled.faq };
+const columns = event.footerColumns.map(column => ({ ...column, links: column.links.filter(link => visibility[link.href] !== false) })).filter(column => column.links.length);
+---
+<footer class="footer" id="footer">
+  <div class="footer__inner">
+    <div class="footer__top">
+      <a href="/" class="event-wordmark">{event.name}</a>
+    </div>
+
+    <div class="footer__mid">
+      <p class="footer__tagline">{event.footerTagline}<br />{event.date}.</p>
+      <nav class="footer__cols" aria-label="Footer">
+        {columns.map((col) => (
+          <div class="footer__col">
+            <p class="footer__col-title"><span class="footer__square"></span>{col.title}</p>
+            {col.links.map((l) => <a href={l.href}>{l.label}</a>)}
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    <div class="footer__mark">
+      <span class="footer__watermark event-watermark" aria-hidden="true">{event.name}</span>
+      <img class="footer__mosaic" src="/assets/footer-mosaic.png" alt="" loading="lazy" />
+
+    <div class="footer__bottom">
+      <p>© 2026 {event.name}.</p>
+      <a href={event.enabled.faq ? "/#faq" : "/#cta"}>Event information</a>
+    </div>
+    </div>
+  </div>
+</footer>

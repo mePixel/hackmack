@@ -1,0 +1,27 @@
+---
+import { event } from '../../config/event';
+const rows = event.integrationRows;
+---
+<section class="integrations" id="integrations">
+  <header class="integrations__header">
+    <p class="badge">{event.sections.tools.badge}</p>
+    <h2 class="h2 h2--center">{event.sections.tools.title}<br /><em>{event.sections.tools.accent}</em></h2>
+    <p class="integrations__lede">{event.sections.tools.description}</p>
+  </header>
+
+  <div class="int-marquee">
+    {rows.map((row) => (
+      <div class="int-marquee__row" data-dir={row.dir}>
+        {/* Second set is the seamless-loop duplicate — decorative, so its
+            tiles carry empty alt text. */}
+        {[false, true].map((dup) => (
+          <div class="int-marquee__set" aria-hidden={dup ? 'true' : undefined}>
+            {row.tiles.map((t) => (
+              <span class="int-tile"><img src={t.src} alt={dup ? '' : t.alt} /></span>
+            ))}
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+</section>

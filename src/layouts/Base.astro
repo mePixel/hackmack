@@ -1,0 +1,53 @@
+---
+import GoogleAnalytics from '../components/GoogleAnalytics.astro';
+import Head from './Head.astro';
+import { event } from '../config/event';
+import Analytics from '@vercel/analytics/astro';
+import SpeedInsights from '@vercel/speed-insights/astro';
+import Nav from '../components/sections/Nav.astro';
+import Footer from '../components/sections/Footer.astro';
+import Cta from '../components/sections/Cta.astro';
+import '../styles/global.css';
+import '../styles/hackathon.css';
+
+export interface Props {
+  title: string;
+  description: string;
+  path: string;
+  ogImage?: string;
+  schema?: boolean;
+  /** Closing CTA panel. Framer shows it on every route except /404 and the
+   *  blog articles, which end on their own related-posts strip. */
+  cta?: boolean;
+}
+const { title, description, path, cta = true, ogImage, schema } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="en" style={`--brand-500:${event.theme.accent};--background:${event.theme.background};--grey-900:${event.theme.ink}`}>
+  <head><Head title={title} description={description} path={path} ogImage={ogImage} schema={schema} /></head>
+  <body>
+    <svg width="0" height="0" aria-hidden="true" style="position: absolute">
+      <defs>
+        <filter id="mosaic-theme-color" color-interpolation-filters="sRGB">
+          <feFlood style="flood-color: var(--brand-500)" />
+          <feComposite in2="SourceAlpha" operator="in" />
+        </filter>
+      </defs>
+    </svg>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <Nav />
+    <main id="main" class="page" data-page={path}>
+      <div class="container">
+        <slot />
+        {cta && <Cta />}
+      </div>
+      <Footer />
+    </main>
+    <script>
+      import '../scripts/entry.js';
+    </script>
+    {import.meta.env.PUBLIC_VERCEL_ANALYTICS && <Analytics />}
+    {import.meta.env.PUBLIC_VERCEL_ANALYTICS && <SpeedInsights />}
+    <GoogleAnalytics />
+  </body>
+</html>

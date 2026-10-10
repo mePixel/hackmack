@@ -1,0 +1,72 @@
+/* Event content inside the original template's sections. */
+.event-wordmark {
+  font: 600 26px/1 var(--font-display);
+  letter-spacing: -0.03em;
+  color: var(--grey-900);
+  text-decoration: none;
+}
+.event-demo {
+  color: var(--white);
+  font: 400 12px/1.5 var(--font-ui);
+}
+.event-track {
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 480px;
+}
+.event-track img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+.event-track > p:last-child,
+.event-step > p {
+  font-size: var(--l-size);
+  line-height: 1.6;
+  color: var(--grey-800);
+}
+.event-step {
+  height: 100%;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  text-align: center;
+}
+.event-step img {
+  width: 25%;
+  max-height: 160px;
+  object-fit: contain;
+}
+.event-step p { max-width: 50ch; }
+.event-day { font-size: var(--h3-size); }
+.footer__watermark.event-watermark {
+  font: 600 clamp(70px, 17vw, 230px)/1.15 var(--font-display);
+  letter-spacing: -0.04em;
+  color: var(--grey-200);
+  text-align: center;
+}
+/* Hidden content must also be absent from keyboard and screen-reader navigation. */
+.hiw__lottie[hidden], .mock[hidden] { display: none; }
+@media (max-width: 810px) {
+  .event-track { padding: 20px; gap: 18px; }
+  .event-track img { width: 90px; height: 90px; }
+  .event-step { padding: 20px; gap: 16px; }
+  .hiw__stage { min-height: 360px; }
+  .event-step .h2 { font-size: 28px; }
+}
+
+.nav__brand { text-decoration: none; }
+
+.fbtn__arrows svg { color: var(--white); }
+
+/* Tint decorative mosaic assets without recoloring photos or partner logos. */
+img[src^="/assets/mosaic-"],
+img[src$="-mosaic.png"] {
+  background: transparent;
+  filter: url(#mosaic-theme-color);
+}
