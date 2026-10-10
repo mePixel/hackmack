@@ -11,19 +11,26 @@ export function init(reduced) {
   if (!buttons.length) return;
 
   const inner = section.querySelector('.delegation__inner');
+  const stage = section.querySelector('.stage');
+  const mobile = window.matchMedia('(max-width: 810px)');
+  let selected = 0;
+  let collapsed = false;
 
-  const select = (step) => {
+  const select = (step, collapse = false) => {
+    selected = step;
+    collapsed = collapse;
+    stage.hidden = collapse;
     // Tablet and phone place the stage directly beneath the active feature;
     // flex order does that without moving nodes.
     if (inner) inner.style.setProperty('--stage-order', String(step * 2 + 1));
     buttons.forEach((b) => {
-      const on = Number(b.dataset.step) === step;
+      const on = !collapse && Number(b.dataset.step) === step;
       b.setAttribute('aria-selected', String(on));
-      b.tabIndex = on ? 0 : -1;
+      b.tabIndex = Number(b.dataset.step) === step ? 0 : -1;
       b.closest('.feature').classList.toggle('is-active', on);
     });
     mocks.forEach((m) => {
-      const on = Number(m.dataset.step) === step;
+      const on = !collapse && Number(m.dataset.step) === step;
       m.classList.toggle('is-active', on);
       m.hidden = !on;
       if (on && !reduced && m.animate) {
@@ -36,8 +43,12 @@ export function init(reduced) {
   };
 
   buttons.forEach((b) => {
-    b.addEventListener('click', () => select(Number(b.dataset.step)));
+    b.addEventListener('click', () => {
+      const step = Number(b.dataset.step);
+      select(step, mobile.matches && selected === step && !collapsed);
+    });
   });
+  mobile.addEventListener('change', () => select(selected));
 
   // Roving focus across the tablist, as expected of role="tab".
   section.querySelector('.features').addEventListener('keydown', (e) => {

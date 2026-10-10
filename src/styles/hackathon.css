@@ -67,7 +67,7 @@
   padding: 24px 0 32px;
 }
 /* Hidden content must also be absent from keyboard and screen-reader navigation. */
-.hiw__lottie[hidden], .mock[hidden] { display: none; }
+.hiw__lottie[hidden], .mock[hidden], .stage[hidden] { display: none; }
 @media (max-width: 810px) {
   .event-track { padding: 20px; gap: 18px; }
   .event-track img { width: 90px; height: 90px; }
