@@ -11,7 +11,7 @@ import { event } from '../../config/event';
         {event.name}
       </h1>
       <p class="hero__lede">{event.description}</p>
-      <p class="hero__lede">{event.date} · {event.location} · {event.cost}</p>
+      <p class="hero__lede">{event.date}<br />{event.location}<br />{event.cost}</p>
       <Button href={event.registration.url || "#cta"} label={event.registration.url ? event.registration.label : event.registration.navLabel} variant="primary" />
     </div>
   </div>
