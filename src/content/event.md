@@ -279,7 +279,7 @@ footerTagline: A 24-hour hackathon at FH Dornbirn.
 enabled:
   venue: false
   logos: true
-  why: true
+  why: false
   tracks: true
   people: false
   schedule: true
