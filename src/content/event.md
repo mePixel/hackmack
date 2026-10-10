@@ -32,27 +32,19 @@ schedule:
   - day: Saturday
     date: May 22
     items:
-      - time: "10:00"
-        title: Opening & registration
       - time: "11:00"
         title: Opening & Festival Kick-off
       - time: "12:00"
         title: Challenge Reveal & Team Building
       - time: "13:00"
-        title: Hackathon Start – 24 Hours of Innovation
-      - time: "13:30"
-        title: Coding, Design, Mentoring & Networking (24h)
+        title: Hackathon Start
   - day: Sunday
     date: May 23
     items:
       - time: "13:00"
         title: Hackathon Ends & Project Submission
-      - time: "13:30"
-        title: Pitch Preparation
       - time: "14:00"
         title: Final Pitches
-      - time: "15:30"
-        title: Jury Deliberation
       - time: "16:00"
         title: Award Ceremony
       - time: "17:00"
