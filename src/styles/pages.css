@@ -1306,7 +1306,6 @@ h3.wdquote__value {
   .page .faq__mosaic { width: 405px; top: 316px; }
   /* Framer keeps the feature rows on a 438px measure at tablet. */
   .page .delegation .feature { width: 438px; }
-  .page .delegation .stage { height: 645px; }
   /* Per-page tablet offsets, measured against Framer at 820. */
   .page .nf { padding: 250px 0 94px; }
   /* Framer's article table runs taller at tablet too. */
@@ -1344,8 +1343,7 @@ h3.wdquote__value {
   .page .testimonials { gap: 20px; }
   .page .why__header,
   .page .delegation__header { gap: 20px; }
-  /* Framer's phone stage is 296 tall and the feature labels run at 120%. */
-  .page .delegation .stage { height: 296px; }
+  /* Feature labels use a tighter line height on phones. */
   .page .feature__label { line-height: 120%; }
   /* Framer switches the delegation lede to the 18px style at phone. */
   .page .delegation__lede { font-size: var(--xl-size); }
