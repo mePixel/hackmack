@@ -1,5 +1,6 @@
 /* Event content inside the original template's sections. */
 .event-wordmark {
+  min-width: 0;
   font: 600 26px/1 var(--font-display);
   letter-spacing: -0.03em;
   color: var(--grey-900);
@@ -89,4 +90,26 @@ img[src^="/assets/mosaic-"],
 img[src$="-mosaic.png"] {
   background: transparent;
   filter: url(#mosaic-theme-color);
+}
+
+.nav__right { flex-shrink: 0; }
+.nav__cta .fbtn__label, .hero__join .fbtn__label { font-weight: 700; }
+.hero__date { display: block; margin-bottom: 8px; font-size: 32px; line-height: 1.2; }
+.footer__wordmark { display: block; width: 100%; max-width: 880px; margin-bottom: 24px; }
+.footer__wordmark img { width: 100%; height: auto; image-rendering: pixelated; }
+
+@media (min-width: 811px) {
+  .hero__join { display: none !important; }
+}
+
+@media (max-width: 810px) {
+  .page.page { padding-top: var(--nav-height, 142px); }
+  .page .container, .page[data-page="/"] .container { padding-inline: 24px; }
+  .page .hero { --hero-top: 24px; }
+  .hero__date { font-size: 24px; }
+  .page .legal { padding-top: 40px; }
+  .footer .footer__inner { padding-inline: 24px; }
+  .footer .footer__cols { gap: 24px; }
+  .footer .footer__col { width: 120px; }
+  .page .cta__content { width: 100%; padding-inline: 24px; }
 }

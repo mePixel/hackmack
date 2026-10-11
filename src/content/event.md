@@ -41,6 +41,9 @@ theme:
 about:
   title: About the hackathon
   description: Join us for a weekend in Dornbirn where developers, designers, and curious minds explore new ideas at the intersection of infrastructure and AI. Expect hands-on challenges, collaboration, and a chance to meet people who enjoy building things. A hackathon brings teams together to turn an idea into a prototype within a limited time — here, you’ll have 24 hours to experiment, learn, and share what you’ve built. Everyone is welcome, including first-time hackers.
+  highlights:
+    - 5 Challenges
+    - 5 Prizes
   points:
     - Come with a team or find one here.
     - Ask other teams for help or feedback.
@@ -115,8 +118,8 @@ sections:
     description: Code, design, collaborate, and present with the tools you already enjoy. These are toolkit examples, not event sponsors or required integrations.
   faq:
     badge: FAQ
-    title: Questions
-    accent: answered.
+    title: FAQ
+    accent: ""
     description: What to know before you come.
 benefits:
   - num: "01"
@@ -263,8 +266,6 @@ integrationRows:
 navLinks:
   - label: Experience
     href: /#why
-  - label: Challenges
-    href: /#delegation
   - label: Schedule
     href: /#pricing
   - label: FAQ
@@ -282,8 +283,6 @@ footerColumns:
     links:
       - label: Sponsoring
         href: /sponsoring/
-      - label: Challenge tracks
-        href: /#delegation
       - label: How it works
         href: /#how-it-works
   - title: Good to know
@@ -299,7 +298,7 @@ enabled:
   venue: false
   logos: true
   why: false
-  tracks: true
+  tracks: false
   people: false
   schedule: true
   steps: false

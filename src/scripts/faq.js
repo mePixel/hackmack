@@ -42,12 +42,6 @@ export function init(reduced) {
       if (item.hasAttribute("open")) {
         collapse();
       } else {
-        // close any other open item first
-        faqItems.forEach((other) => {
-          if (other !== item && other.hasAttribute("open")) {
-            other.removeAttribute("open");
-          }
-        });
         expand();
       }
     });

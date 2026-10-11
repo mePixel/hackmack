@@ -1,13 +1,11 @@
 ---
-import Button from '../Button.astro';
 import { event } from '../../config/event';
 const faqs = event.faq;
 ---
 <section class="faq" id="faq">
   <div class="faq__left">
-    <h2 class="h2">{event.sections.faq.title}<br />{event.sections.faq.accent}</h2>
+    <h2 class="h2">{event.sections.faq.title}</h2>
     <p class="faq__sub">{event.sections.faq.description}</p>
-    <Button href="#cta" label="Registration details" variant="primary" />
   </div>
 
   <div class="faq__list">

@@ -6,7 +6,8 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
 <footer class="footer" id="footer">
   <div class="footer__inner">
     <div class="footer__top">
-      <a href="/" class="event-wordmark">{event.name}</a>
+      <!-- shortcut: the pixel wordmark uses the current name and accent; redraw it when either changes. -->
+      <a href="/" class="footer__wordmark"><img src="/assets/hackathon-wordmark.png" width="440" height="21" alt={event.name} loading="lazy" /></a>
     </div>
 
     <div class="footer__mid">
@@ -14,16 +15,11 @@ const columns = event.footerColumns.map(column => ({ ...column, links: column.li
       <nav class="footer__cols" aria-label="Footer">
         {columns.map((col) => (
           <div class="footer__col">
-            <p class="footer__col-title"><span class="footer__square"></span>{col.title}</p>
+            <p class="footer__col-title">{col.title}</p>
             {col.links.map((l) => <a href={l.href}>{l.label}</a>)}
           </div>
         ))}
       </nav>
-    </div>
-
-    <div class="footer__mark">
-      <span class:list={['footer__watermark', 'event-watermark', { 'event-watermark--long': event.name.length > 20 }]} aria-hidden="true">{event.name}</span>
-      <img class="footer__mosaic" src={event.images.footer} alt="" loading="lazy" />
     </div>
 
     <div class="footer__bottom">

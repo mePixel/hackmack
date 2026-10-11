@@ -17,11 +17,11 @@ const Heading = headingLevel === 1 ? 'h1' : 'h2';
   </header>
 
   <div class="plans" id="plans">
-    {event.schedule.map((day, i) => (
-      <article class={`plan${i === 1 ? ' is-featured' : ''}`} data-index={i}>
+    {event.schedule.map((day) => (
+      <article class="plan">
         <h4 class="plan__name">{day.day}</h4>
         <div class="plan__pricing"><h3 class="plan__price event-day">{day.date}</h3><p class="plan__period">{event.enabled.venue ? event.location : 'Venue to be confirmed'}</p></div>
-        <ul class="plan-features">{day.items.map(item => <li><span class="plan-features__dot"></span><span><strong>{item.time}</strong> · {item.title}</span></li>)}</ul>
+        <ul class="plan-features">{day.items.map(item => <li><span><strong>{item.time}</strong> · {item.title}</span></li>)}</ul>
       </article>
     ))}
   </div>

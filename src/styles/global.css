@@ -31,7 +31,7 @@ a, button, summary, label, input, textarea, select, [role="button"], [role="tab"
 
 /* Anchored sections clear the fixed nav. */
 section[id] {
-  scroll-margin-top: 96px;
+  scroll-margin-top: calc(var(--nav-height, 116px) + 24px);
 }
 
 .skip-link {
@@ -71,8 +71,7 @@ img {
 }
 
 .page {
-  /* Framer starts every page's content 73px down, clearing the fixed nav. */
-  padding-top: 73px;
+  padding-top: var(--nav-height, 116px);
   min-height: 100vh;
   width: 100%;
   display: flex;
@@ -177,14 +176,14 @@ img {
   align-items: center;
   justify-content: space-between;
   gap: 24px;
-  padding: 10px 20px;
+  padding: 32px 20px;
 }
 
 .nav__brand {
   display: inline-flex;
   align-items: center;
-  /* Framer's brand cell is 52px tall, which sets the whole 72px bar. */
-  height: 52px;
+  min-height: 52px;
+  min-width: 0;
 }
 
 .nav__brand img {
@@ -205,7 +204,7 @@ img {
   padding: 0;
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 24px;
 }
 
 .nav__links a {
@@ -881,8 +880,8 @@ img {
   margin: 20px 0 6px;
   font-family: var(--font-ui);
   font-weight: 400;
-  font-size: var(--l-size);
-  color: var(--grey-800);
+  font-size: 18px;
+  color: #000;
 }
 
 /* Framer hangs the mosaic below the column without it adding height, so the
@@ -951,12 +950,12 @@ img {
 
 .faq__answer p {
   margin: 0;
-  padding: 2px 0 24px;
+  padding: 8px 0 24px;
   font-family: var(--font-ui);
   font-weight: 400;
-  font-size: var(--m-size);
-  line-height: var(--body-line);
-  color: var(--grey-800);
+  font-size: 18px;
+  line-height: 1.6;
+  color: #000;
   max-width: 560px;
 }
 
@@ -1033,7 +1032,7 @@ img {
   font-weight: 400;
   font-size: var(--s-size);
   line-height: var(--body-line);
-  color: var(--grey-800);
+  color: #000;
   width: 239px;
 }
 
@@ -1057,7 +1056,7 @@ img {
   font-family: var(--font-ui);
   font-weight: 600;
   font-size: var(--m-size);
-  color: var(--grey-900);
+  color: var(--brand-500);
 }
 
 .footer__square {
@@ -1071,10 +1070,9 @@ img {
   font-family: var(--font-ui);
   font-weight: 400;
   font-size: var(--m-size);
-  color: var(--grey-800);
+  color: #000;
   line-height: var(--body-line);
   text-decoration: none;
-  padding-left: 16px;
   transition: color 160ms var(--e-tween-out);
 }
 
@@ -1126,7 +1124,7 @@ img {
   font-family: var(--font-ui);
   font-weight: 400;
   font-size: var(--m-size);
-  color: var(--grey-800);
+  color: #000;
 }
 
 .footer__bottom p {
@@ -1134,7 +1132,7 @@ img {
 }
 
 .footer__bottom a {
-  color: var(--grey-800);
+  color: #000;
   text-decoration: none;
   transition: color 160ms var(--e-tween-out);
 }
@@ -1750,41 +1748,15 @@ img {
 
 .plans {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 48px;
 }
 
 .plan {
-  position: relative;
-  padding: 16px;
-  border-radius: 12px;
-  border: 1px solid var(--x-card-line);
-  background: var(--footer);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  isolation: isolate;
-  overflow: hidden;
-  cursor: default;
 }
-
-/* A light overlay keeps the schedule readable over the photograph. */
-.plan::before {
-  content: "";
-  position: absolute;
-  inset: -40px;
-  z-index: -2;
-  background: linear-gradient(rgba(247, 247, 244, 0.75), rgba(247, 247, 244, 0.75)), var(--schedule-image) center / cover no-repeat;
-  filter: blur(20px);
-  opacity: 0;
-  transition: opacity var(--d-spring) var(--e-tween-out);
-  pointer-events: none;
-}
-
-.plan.is-featured::before { opacity: 1; }
-.plan.is-featured { background-color: transparent; }
-.plan.is-featured .plan__period,
-.plan.is-featured .plan__desc { color: var(--grey-900); }
 
 .plan__name {
   margin: 0;
@@ -1867,6 +1839,8 @@ img {
   line-height: var(--body-line);
   color: var(--grey-900);
 }
+
+.plan-features strong { color: var(--brand-500); }
 
 .plan-features__dot {
   width: 8px;

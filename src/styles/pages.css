@@ -370,7 +370,7 @@ a.cmethod__value:hover { text-decoration: underline; }
    margins; body copy is the L style (16px / 120%). */
 
 /* Framer centres this page on a 700px measure with an H1-sized title. */
-.legal { max-width: 700px; margin: 0 auto; padding: 80px 0; text-align: center; }
+.legal { max-width: 700px; margin: 0 auto; padding: 80px 0; text-align: center; color: #000; }
 .legal__updated { margin: 0 0 26px; }
 .legal > *:not(.legal__updated):not(.legal__title) { text-align: left; }
 .legal__title {
@@ -385,7 +385,7 @@ a.cmethod__value:hover { text-decoration: underline; }
   margin: 0 0 40px;
   font-size: var(--l-size);
   line-height: var(--body-line);
-  color: var(--grey-800);
+  color: #000;
 }
 .legal__section {
   display: grid;
@@ -407,7 +407,7 @@ a.cmethod__value:hover { text-decoration: underline; }
   margin: 0;
   font-size: var(--l-size);
   line-height: var(--body-line);
-  color: var(--grey-800);
+  color: #000;
 }
 /* Framer stacks the bullets flush; the 20px rhythm is between blocks. */
 .legal__list { display: flex; flex-direction: column; gap: 0; margin: 0; padding-left: 18px; }
@@ -415,7 +415,7 @@ a.cmethod__value:hover { text-decoration: underline; }
   margin: 0;
   font-size: var(--l-size);
   line-height: var(--body-line);
-  color: var(--grey-800);
+  color: #000;
 }
 
 /* ---------- waitlist ---------- */
@@ -1227,10 +1227,8 @@ h3.wdquote__value {
   .why .why-cards { grid-template-columns: 1fr; }
 }
 
-/* Framer stacks the pricing cards from the Tablet breakpoint down. Scoped
-   under .pricing so it outranks global.css, which lands later in the cascade
-   because @import is hoisted. */
-@media (max-width: 1200px) {
+/* Stack the schedule days on mobile. */
+@media (max-width: 810px) {
   .pricing .plans { grid-template-columns: 1fr; }
   /* The cards go full width but Framer keeps the blurb on a short measure.
      Normal wrapping (not balance) reproduces its two-line break. */

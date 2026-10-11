@@ -4,6 +4,13 @@ export function init(reduced) {
   const navBar = document.querySelector(".nav-bar");
   const heroSection = document.getElementById("hero");
   if (navBar) {
+    const brand = navBar.querySelector('.nav__brand');
+    if (brand) new ResizeObserver(() => {
+      const style = getComputedStyle(brand.closest('.nav'));
+      const height = brand.offsetHeight + parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+      document.documentElement.style.setProperty('--nav-height', `${height}px`);
+    }).observe(brand);
+
     const REVEAL_AT_TOP = 80;
     const DELTA = 6;
     let lastY = window.scrollY;
