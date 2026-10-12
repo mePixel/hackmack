@@ -1334,7 +1334,7 @@ h3.wdquote__value {
   }
   .page .pricing__side { padding-top: 0; width: 100%; }
   .page .pricing__billing { justify-content: center; }
-  .page .pricing .plans { gap: 20px; }
+  .page .pricing .plans { gap: 56px; }
   /* Framer tightens the section gaps to 20 at phone. */
   .page .why,
   .page .delegation,
